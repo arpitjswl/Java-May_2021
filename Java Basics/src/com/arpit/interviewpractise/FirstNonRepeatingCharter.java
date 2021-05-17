@@ -2,12 +2,12 @@ package com.arpit.interviewpractise;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
+import java.util.Map.Entry;
 
-public class FindFirstNonRepCharacter {
-
-	public static void main(String[] args) {
+public class FirstNonRepeatingCharter {
+	public static void main (String args[]) {
+		
 		String input = "ABABBBERRRRK";
 		char arr[] = input.toCharArray(); 
 		
@@ -23,26 +23,22 @@ public class FindFirstNonRepCharacter {
 		}
 		
 		System.out.println(hm);
+
 		
-		char maxKey = ' ';
-		int maxVal = 0;
-		
+		int minVal = 1;
+		char occuredOnce = ' '; 
 		Set<Entry<Character, Integer>> set = hm.entrySet();
 		
 		for (Map.Entry<Character, Integer> map : set) {
-			if (map.getValue() > maxVal) {
-				maxVal = map.getValue();
-				maxKey = map.getKey();
+			if (map.getValue() == minVal) {
+			
+				occuredOnce = map.getKey();
+				break;
 			}
 			
 			
-			
 		}
-		System.out.println("Character repated most is : " + maxKey + maxVal + " times");
-		System.out.println();
-		
-		
+		System.out.println("First non repeted char is : " + occuredOnce);
 
 	}
-
 }
