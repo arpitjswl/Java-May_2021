@@ -1,0 +1,16 @@
+server.port = 8888
+
+hibernate.hbm2ddl.auto=create
+
+db.driver=oracle.jdbc.driver.OracleDriver
+db.url=jdbc:oracle:thin:@localhost:1521:xe
+db.username=Arpit
+db.password=Indrani9@
+
+hibernate.show_sql=true
+
+
+#hibernate config
+hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+
+entitymanager.packagesToScan=model

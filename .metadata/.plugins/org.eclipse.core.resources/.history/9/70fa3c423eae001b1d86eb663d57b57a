@@ -1,0 +1,9 @@
+package com.arpit.jsontojava.ConvertJSON;
+
+public class TestLogic {  
+	  
+   
+    public void testFindMax(){  
+     
+    }  
+}  

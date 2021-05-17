@@ -1,0 +1,143 @@
+package com.arpit.jsontojava.ConvertJSON;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import org.apache.tomcat.util.json.JSONParser;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.*;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+
+@SpringBootApplication
+public class ConvertJsonApplication {
+
+	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
+		SpringApplication.run(ConvertJsonApplication.class, args);
+		
+		
+		Employee emp1 = new Employee();
+	      emp1.setFirstName("Raja");
+	      emp1.setLastName("Ramesh");
+	      emp1.setId(115);
+	      emp1.getTechnologies().add("Java");
+	      emp1.getTechnologies().add("Selenium");
+	      emp1.getTechnologies().add("Spark");
+	      ObjectMapper mapper = new ObjectMapper();
+	      
+//	      String jsonStr = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(emp1);
+	      String jsonStr = mapper.writeValueAsString(emp1);
+	      System.out.println(jsonStr);
+	      System.out.println("Deserializing JSON to Object:");
+	      Employee emp2 = mapper.readValue(jsonStr, Employee.class);
+	      System.out.println(emp2.getId() + " " + emp2.getFirstName() + " " + emp2.getLastName() + " " + emp2.getTechnologies());
+	      
+	      
+	      Employee obj = mapper.readValue(jsonStr, Employee.class);
+	      
+	      URL url = new URL("http://jsonplaceholder.typicode.com/posts");
+	      System.out.println(url);
+	      
+	      HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+	      conn.setRequestMethod("GET");
+	      conn.connect();
+	      int responsecode = conn.getResponseCode();
+	      
+	      Scanner sc = new Scanner(url.openStream());
+	      String inline= "";
+	      while(sc.hasNext())
+	      {
+	      inline+=sc.nextLine();
+	      }
+	      System.out.println("\nJSON data in string format");
+	      System.out.println(inline);
+	      
+	      
+	      ///
+	      
+	      
+	      JSONParser parser = new org.json.simple.parser.JSONParser();
+
+	        try {        
+	            URL oracle = new URL("https://carlofontanos.com/api/tutorials.php?data=all"); // URL to Parse
+	            URLConnection yc = oracle.openConnection();
+	            BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+	           
+	            String inputLine;
+	            while ((inputLine = in.readLine()) != null) {              
+	                JSONArray a = (JSONArray) parser.parse(inputLine);
+	               
+	                // Loop through each item
+	                for (Object o : a) {
+	                    JSONObject tutorials = (JSONObject) o;
+
+	                    Long id = (Long) tutorials.get("ID");
+	                    System.out.println("Post ID : " + id);
+
+	                    String title = (String) tutorials.get("post_title");
+	                    System.out.println("Post Title : " + title);
+
+	                    System.out.println("\n");
+	                }
+	            }
+	            in.close();
+	        } catch (FileNotFoundException e) {
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } catch (ParseException e) {
+	            e.printStackTrace();
+	        }  
+	    }  
+	      
+	    
+	      
+	      
+	      }
+	
+}
+
+
+class Employee {
+	   private int id;
+	   private String firstName;
+	   private String lastName;
+	   private List<String> technologies = new ArrayList();
+	   public int getId() {
+	      return id;
+	   }
+	   public void setId(int id) {
+	      this.id = id;
+	   }
+	   public String getFirstName() {
+	      return firstName;
+	   }
+	   public void setFirstName(String firstName) {
+	      this.firstName = firstName;
+	   }
+	   public String getLastName() {
+	      return lastName;
+	   }
+	   public void setLastName(String lastName) {
+	      this.lastName = lastName;
+	   }  
+	   public List getTechnologies() {
+	      return technologies;
+	   }
+	   public void setTechnologies(List technologies) {
+	      this.technologies = technologies;
+	   }
+	}

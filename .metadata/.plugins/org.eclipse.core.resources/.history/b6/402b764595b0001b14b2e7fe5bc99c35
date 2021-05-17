@@ -1,0 +1,9 @@
+package exception;
+
+public class DataNotFoundException extends Exception {
+	private String message;
+	
+	public DataNotFoundException(String msg) {
+		this.message = msg;
+	}
+}

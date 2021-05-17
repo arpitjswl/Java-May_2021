@@ -1,0 +1,9 @@
+package com.arpit.jsontojava.ConvertJSON;
+
+public class Customer {
+	
+	private int userId;
+	private int id;
+	String title;
+	String body;
+}	

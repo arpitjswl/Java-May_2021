@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="Session"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="Optional"/>
+			<item value="optional"/>
+			<item value="update"/>
+			<item value="url"/>
+			<item value="&#x0D;&#x0A;&#x09;&#x09;Mohit m = new Mohit();&#x0D;&#x0A;&#x09;&#x09;m.setM_name(&quot;Mohit Kamble&quot;);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;GirlFriends gf1 = new GirlFriends();&#x0D;&#x0A;&#x09;&#x09;gf1.setGf_name(&quot;Purva Shetty&quot;);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;GirlFriends gf2 = new GirlFriends();&#x0D;&#x0A;&#x09;&#x09;gf2.setGf_name(&quot;Dolly Kurmi&quot;);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;GirlFriends gf3 = new GirlFriends();&#x0D;&#x0A;&#x09;&#x09;gf3.setGf_name(&quot;Vaishnvai Shinde&quot;);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;m.getListOfGf().add(gf1);&#x0D;&#x0A;&#x09;&#x09;m.getListOfGf().add(gf2);&#x0D;&#x0A;&#x09;&#x09;m.getListOfGf().add(gf3);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x0D;&#x0A;&#x09;&#x09;gf1.setGfs(m);&#x0D;&#x0A;&#x09;&#x09;gf2.setGfs(m);&#x0D;&#x0A;&#x09;&#x09;gf3.setGfs(m);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;sess.save(m);&#x0D;&#x0A;&#x09;&#x09;sess.getTransaction().commit();&#x0D;&#x0A;&#x09;&#x09;sess.close();&#x0D;&#x0A;"/>
+			<item value="Mohit m = new Mohit();"/>
+			<item value="&#x09;Mohit m = new Mohit();"/>
+			<item value="&#x09;"/>
+			<item value="&#x09;&#x09;"/>
+			<item value="&#x0D;&#x0A;&#x09;&#x09;Mohit m = new Mohit();&#x0D;&#x0A;&#x09;&#x09;m.setM_name(&quot;Mohit Kamble&quot;);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;GirlFriends gf1 = new GirlFriends();&#x0D;&#x0A;&#x09;&#x09;gf1.setGf_name(&quot;Purva Shetty&quot;);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;GirlFriends gf2 = new GirlFriends();&#x0D;&#x0A;&#x09;&#x09;gf2.setGf_name(&quot;Dolly Kurmi&quot;);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;GirlFriends gf3 = new GirlFriends();&#x0D;&#x0A;&#x09;&#x09;gf3.setGf_name(&quot;Vaishnvai Shinde&quot;);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;m.getListOfGf().add(gf1);&#x0D;&#x0A;&#x09;&#x09;m.getListOfGf().add(gf2);&#x0D;&#x0A;&#x09;&#x09;m.getListOfGf().add(gf3);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x0D;&#x0A;&#x09;&#x09;gf1.setGfs(m);&#x0D;&#x0A;&#x09;&#x09;gf2.setGfs(m);&#x0D;&#x0A;&#x09;&#x09;gf3.setGfs(m);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;sess.save(m);&#x0D;&#x0A;&#x09;&#x09;sess.getTransaction().commit();&#x0D;&#x0A;&#x09;&#x09;sess.close();&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;"/>
+			<item value="/*"/>
+		</list>
+		<list key="replacehistory">
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1329"/>
+		<item key="DIALOG_Y_ORIGIN" value="250"/>
+		<item key="DIALOG_WIDTH" value="385"/>
+		<item key="DIALOG_HEIGHT" value="523"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+</section>

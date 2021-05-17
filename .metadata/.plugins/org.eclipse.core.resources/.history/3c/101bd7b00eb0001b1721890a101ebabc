@@ -1,0 +1,6 @@
+package com.arpit.srpingboot.AngularIntegration.model;
+
+@Enti
+public class Customer {
+
+}

@@ -1,0 +1,10 @@
+package com.arpit.srpingboot.AngularIntegration.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Cust_Table")
+public class Customer {
+
+}

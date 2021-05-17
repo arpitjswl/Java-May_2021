@@ -1,0 +1,9 @@
+	@Temporal for Saving only date except Timestamp
+
+Hibernate :
+
+1 : Insert to DB
+2 : Retreive Object from DB
+3 : Update
+4 : Delete
+5 : Get List of Objects
