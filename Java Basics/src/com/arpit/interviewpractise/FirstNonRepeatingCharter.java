@@ -31,7 +31,6 @@ public class FirstNonRepeatingCharter {
 		
 		for (Map.Entry<Character, Integer> map : set) {
 			if (map.getValue() == minVal) {
-			
 				occuredOnce = map.getKey();
 				break;
 			}
