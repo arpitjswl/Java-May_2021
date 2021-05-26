@@ -1,14 +1,10 @@
 package com.arpit.graphql.GraphQlSpringBoot.service.datafetcher;
 
-import java.util.Optional;
 
-import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import com.arpit.graphql.GraphQlSpringBoot.model.Book;
 import com.arpit.graphql.GraphQlSpringBoot.repository.BookRepository;
-
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
 

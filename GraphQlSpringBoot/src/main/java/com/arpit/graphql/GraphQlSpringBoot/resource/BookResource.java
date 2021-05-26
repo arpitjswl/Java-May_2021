@@ -23,6 +23,6 @@ public class BookResource {
 	public ResponseEntity<Object> getAllBooks(@RequestBody String query) {
 		ExecutionResult exceute =
 				graphQLService.getGraphQL().execute(query);
-		return new ResponseEntity<Object>(exceute, HttpStatus.OK);
+		return new ResponseEntity<Object>(exceute, HttpStatus.CREATED);
 	}
 }
