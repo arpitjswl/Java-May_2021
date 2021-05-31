@@ -21,7 +21,7 @@ public class ConsumerMain {
 	          
 		
 	        Collections.sort(list, 
-	        		( p1, p2) -> p1.name.compareTo(p2.name)
+	        		(p1, p2) -> p1.name.compareTo(p2.name)
 	        		);
 	        
 	        for (Product p : list) {
@@ -29,7 +29,11 @@ public class ConsumerMain {
 	        }
 	        
 	        System.out.println("-----------------");
-	        list.stream().filter( x -> x.price > 20000 && x.price < 60000 ).collect(Collectors.toList()).forEach( p -> System.out.println(p.price));
+	        list.stream().filter( x -> x.price > 20000 && x.price < 60000 ).collect(Collectors.toList()).
+	        	forEach( p -> System.out.println(p.price));
+	        
+	        list.stream().map( x -> x.price *100).collect(Collectors.toList()).
+	        	forEach(p->System.out.println(p));
 	        
 
 	}

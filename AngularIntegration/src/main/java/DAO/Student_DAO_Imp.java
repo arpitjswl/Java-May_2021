@@ -1,6 +1,8 @@
 package DAO;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +12,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.stereotype.Repository;
 
+import com.arpit.srpingboot.AngularIntegration.model.Customer;
 import com.arpit.srpingboot.AngularIntegration.model.Student;
 
 import exception.DataNotFoundException;  
@@ -62,11 +65,10 @@ public class Student_DAO_Imp  implements Student_DAO{
         query.setParameter("student_id", student.getStudent_id());  
         List<Student> list=query.getResultList();
         Student st = sessionFactory.getCurrentSession().get(Student.class, student.getStudent_id());
-        if (st==null)
+        if (st == null )
         	throw new DataNotFoundException("NOT FOUND !!!!!!!!!!!!");
 		
-        
-        return list;  
+         return list;  
     }  
   
     @Override  
@@ -81,6 +83,29 @@ public class Student_DAO_Imp  implements Student_DAO{
         }  
         return status;  
     }  
+    
+    @Override
+    public List<String> getBranchfromDB(){
+    		List<String> branch = new ArrayList<>();
+    	 Session currentSession = sessionFactory.getCurrentSession();
+    	 Query query = currentSession.createQuery("Select student_branch from Student");
+    	// Query query = currentSession.createQuery("from Student");
+    	 branch = query.getResultList();
+    	 return branch;
+    	 
+    }
+
+	@Override
+	public List<Customer> getCustomerAddress() {
+		List<Customer> customer = new LinkedList<>();
+		 Session currentSession = sessionFactory.getCurrentSession();
+		 Query query = currentSession.createQuery("from Customer");
+		 customer = query.getResultList();
+		 
+		 
+		 
+		 return customer;
+	}
       
       
   

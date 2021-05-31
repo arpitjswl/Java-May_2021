@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;  
 import org.springframework.transaction.annotation.Transactional;
 
+import com.arpit.srpingboot.AngularIntegration.model.Customer;
 import com.arpit.srpingboot.AngularIntegration.model.Student;
 
 import DAO.Student_DAO;  
@@ -40,6 +41,16 @@ public class Student_Service_Imp implements Student_Service {
     @Override  
     public boolean updateStudent(Student student) {  
         return studentdao.updateStudent(student);  
-    }  
+    }
+
+	@Override
+	public List<String> getBranchfromDB() {
+		return studentdao.getBranchfromDB();
+	}
+
+	@Override
+	public List<Customer> getCustomerAddress() {
+		return studentdao.getCustomerAddress();
+	}  
   
 }  

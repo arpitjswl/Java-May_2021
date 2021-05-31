@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.arpit.srpingboot.AngularIntegration.model.Customer;
 import com.arpit.srpingboot.AngularIntegration.model.Student;
 
+import DAO.Student_DAO_Imp;
 import Service.Student_Service;  
   
 @RestController  
@@ -25,7 +27,7 @@ import Service.Student_Service;
 public class Controller {  
       
     @Autowired  
-    private Student_Service studentservice;  
+    private Student_Service studentservice; 
       
     @PostMapping("save-student")
     public boolean saveStudent(@RequestBody Student student) {  
@@ -56,4 +58,14 @@ public class Controller {
     	student.setStudent_id(student_id);  
         return studentservice.updateStudent(student);  
     }  
+    
+    @GetMapping("getCustomBranch")
+    public List<String> getBranch(){
+    	return studentservice.getBranchfromDB();
+    }
+    
+    @GetMapping("customer/getCustomerDetailsWithAddress")
+    public List<Customer> getCustomerAddressWithAllDetails(){
+    	return studentservice.getCustomerAddress();
+    }
 }  

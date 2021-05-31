@@ -6,7 +6,6 @@ public class FactoryPattern {
 		OS os = ObjectFactory.getObject("Android");
 		os.ram();
 	}
-
 }
 
 interface OS{
@@ -54,6 +53,7 @@ class Windows implements OS{
 }
 
 class ObjectFactory{
+	
 	public static OS getObject(String input) {
 		if (input.equals("Android"))
 			return new Android();
