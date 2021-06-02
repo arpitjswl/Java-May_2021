@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "cust_tbl")
 public class Customer {
+	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.TABLE)
 	private Integer cust_id;
