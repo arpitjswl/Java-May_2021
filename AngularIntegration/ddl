@@ -1,0 +1,2 @@
+insert into user_data (user_address, user_email, user_mobile, user_name) 
+	values ('Nagpur', 'jswl.arpit@gmail.com', '9209829799', 'arpit.jswl');

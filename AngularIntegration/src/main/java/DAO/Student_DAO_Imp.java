@@ -119,5 +119,16 @@ public class Student_DAO_Imp  implements Student_DAO{
       public void saveUserData(User user) {
     	  sessionFactory.getCurrentSession().save(user);
       }
+      
+      public User getUser(String email) {
+    	  Session currentSession = sessionFactory.getCurrentSession();
+    	  Query query = currentSession.createQuery("from User where user_email =: email");
+    	  query.setParameter("email", email);
+    	  User user = (User)query.getSingleResult();
+    	  System.out.println("user is " + user);
+    	  if (user != null)
+    		  return user;
+    	 return null;		  
+      }
   
 }  
