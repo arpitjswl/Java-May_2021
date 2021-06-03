@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;  
 import org.hibernate.SessionFactory;  
 import org.hibernate.query.Query;  
@@ -14,12 +16,14 @@ import org.springframework.stereotype.Repository;
 
 import com.arpit.srpingboot.AngularIntegration.model.Customer;
 import com.arpit.srpingboot.AngularIntegration.model.Student;
+import com.arpit.srpingboot.AngularIntegration.model.User;
 
 import exception.DataNotFoundException;  
   
   
   
-@Repository  
+@Repository
+@Transactional
 public class Student_DAO_Imp  implements Student_DAO{  
   
     @Autowired  
@@ -107,6 +111,13 @@ public class Student_DAO_Imp  implements Student_DAO{
 		 return customer;
 	}
       
-      
+	/*
+	 * API's for Angular Project starts here
+	 */
+	
+	
+      public void saveUserData(User user) {
+    	  sessionFactory.getCurrentSession().save(user);
+      }
   
 }  
