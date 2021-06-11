@@ -13,11 +13,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;  
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.stereotype.Repository;
-
 import com.arpit.srpingboot.AngularIntegration.model.Customer;
 import com.arpit.srpingboot.AngularIntegration.model.Student;
 import com.arpit.srpingboot.AngularIntegration.model.User;
-
 import exception.DataNotFoundException;  
   
   
@@ -104,10 +102,7 @@ public class Student_DAO_Imp  implements Student_DAO{
 		List<Customer> customer = new LinkedList<>();
 		 Session currentSession = sessionFactory.getCurrentSession();
 		 Query query = currentSession.createQuery("from Customer");
-		 customer = query.getResultList();
-		 
-		 
-		 
+		 customer = query.getResultList();		 
 		 return customer;
 	}
       
@@ -116,8 +111,21 @@ public class Student_DAO_Imp  implements Student_DAO{
 	 */
 	
 	
+	 public List<User> getAllUsersfromDB() {
+		 Session currentSession = sessionFactory.getCurrentSession();
+		 Query query = currentSession.createQuery("from User");
+		 List<User> list = query.getResultList();
+		 return list;
+     }
+	
       public void saveUserData(User user) {
-    	  sessionFactory.getCurrentSession().save(user);
+    	  try {
+    		  sessionFactory.getCurrentSession().save(user); 
+    	  }
+    	  catch(Exception exception) {
+    		  exception.getCause();
+    	  }
+    	  
       }
       
       public User getUser(String email) {
@@ -129,6 +137,23 @@ public class Student_DAO_Imp  implements Student_DAO{
     	  if (user != null)
     		  return user;
     	 return null;		  
+      }
+      
+      /*
+       * Method For Updating user Data in Database
+       */
+      
+      public boolean updateInDB(User user) {
+    	  User userObj = sessionFactory.getCurrentSession().get(User.class, user.getUser_id());
+    	  
+    	  userObj.setUser_name(user.getUser_name());
+    	  userObj.setUser_email(user.getUser_email());
+    	  userObj.setUser_address(user.getUser_address());
+    	  userObj.setUser_password(user.getUser_password());
+    	  userObj.setUser_mobile(user.getUser_mobile());
+    	  
+    	  sessionFactory.getCurrentSession().update(userObj);
+    	  return true;
       }
   
 }  
