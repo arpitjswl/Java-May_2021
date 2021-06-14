@@ -45,4 +45,9 @@ public class UserController {
 		user.setUser_id(id);
 		return dao.updateInDB(user);
 	}
+	
+	@GetMapping(path = "/getEmail/{inputEmail}")
+	public boolean checkIfEmailExists(@PathVariable("inputEmail") String inputEmail) {
+		return dao.checkEmail(inputEmail);
+	}
 }

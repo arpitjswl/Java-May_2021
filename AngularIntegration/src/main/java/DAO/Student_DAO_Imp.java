@@ -155,5 +155,20 @@ public class Student_DAO_Imp  implements Student_DAO{
     	  sessionFactory.getCurrentSession().update(userObj);
     	  return true;
       }
+      
+      public boolean checkEmail(String email) {
+    	  Session currentSession = sessionFactory.getCurrentSession();
+    	  Query query = currentSession.createQuery("from User where user_email =: email");
+    	  query.setParameter("email", email);
+    	  List<User> list = query.getResultList();
+    	  Iterator itr = list.iterator();
+    	  
+    	  while (itr.hasNext()) {
+    		  User user = (User)itr.next();
+    		  if (user.getUser_email().equals(email))
+    			  return true;
+    	  }
+    	  return false;
+      }	
   
 }  
