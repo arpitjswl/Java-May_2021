@@ -11,12 +11,14 @@ import javax.transaction.Transactional;
 import org.hibernate.Session;  
 import org.hibernate.SessionFactory;  
 import org.hibernate.query.Query;  
-import org.springframework.beans.factory.annotation.Autowired;  
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import com.arpit.srpingboot.AngularIntegration.model.Customer;
 import com.arpit.srpingboot.AngularIntegration.model.Student;
 import com.arpit.srpingboot.AngularIntegration.model.User;
-import exception.DataNotFoundException;  
+import exception.DataNotFoundException;
+import exception.EmailExistsException;  
   
   
   
@@ -117,16 +119,29 @@ public class Student_DAO_Imp  implements Student_DAO{
 		 List<User> list = query.getResultList();
 		 return list;
      }
-	
-      public void saveUserData(User user) {
-    	  try {
-    		  sessionFactory.getCurrentSession().save(user); 
-    	  }
-    	  catch(Exception exception) {
-    		  exception.getCause();
-    	  }
-    	  
-      }
+	 
+
+		public void saveUserData(User user) {
+			
+				Session currentSession = sessionFactory.getCurrentSession();
+				Query query = currentSession.createQuery("from User");
+				List<User> list = query.getResultList();
+				Iterator itr = list.iterator();
+
+				if (list.size() == 0)
+					sessionFactory.getCurrentSession().save(user);
+				
+				while (itr.hasNext()) {
+					User dbUser = (User) itr.next();
+					System.out.println("Passed email from Input ::::::" + user.getUser_email());
+					System.out.println("DB Email ::::::" + dbUser.getUser_email());
+
+					if (dbUser.getUser_email().equals(user.getUser_email()))
+						throw new EmailExistsException("Email Already exists in Database");
+					if (dbUser.getUser_email() != user.getUser_email())
+						sessionFactory.getCurrentSession().save(user);
+			} 
+		} 
       
       public User getUser(String email) {
     	  Session currentSession = sessionFactory.getCurrentSession();
