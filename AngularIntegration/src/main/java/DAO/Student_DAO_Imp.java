@@ -117,6 +117,9 @@ public class Student_DAO_Imp  implements Student_DAO{
 		 Session currentSession = sessionFactory.getCurrentSession();
 		 Query query = currentSession.createQuery("from User");
 		 List<User> list = query.getResultList();
+		 
+		 	if (list.size() == 0)
+		 		throw new DataNotFoundException("No data Found in Database");
 		 return list;
      }
 	 

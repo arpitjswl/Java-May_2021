@@ -30,20 +30,20 @@ public class CustomizedExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<Object>(exceptionResponse, HttpStatus.CONFLICT);
 	}
 	
+	@ExceptionHandler(DataNotFoundException.class)
+	public final ResponseEntity<Object> handleNoDataFound(Exception ex, WebRequest request) throws Exception {
+		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), "No Data is AVAILABLE in Database",
+				request.getDescription(true));
+		return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
+	}
+
 	/*
-	 * @ExceptionHandler(NoDataFound.class) public final ResponseEntity<Object>
-	 * handleUserNotFoundException(Exception ex, WebRequest request) throws
-	 * Exception { ExceptionResponse exceptionResponse = new ExceptionResponse(new
-	 * Date(), ex.getMessage(), request.getDescription(false)); return new
-	 * ResponseEntity(exceptionResponse, HttpStatus.NO_CONTENT); }
-	 * 
-	 * @Override protected ResponseEntity<Object> handleMethodArgumentNotValid(
-	 * MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status,
-	 * WebRequest request) { ExceptionResponse exceptionResponse = new
-	 * ExceptionResponse(new Date(), "Validation Failed",
+	 * @Override protected ResponseEntity<Object>
+	 * handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders
+	 * headers, HttpStatus status, WebRequest request) { ExceptionResponse
+	 * exceptionResponse = new ExceptionResponse(new Date(), "Validation Failed",
 	 * ex.getBindingResult().toString()); return new
 	 * ResponseEntity<Object>(exceptionResponse, HttpStatus.BAD_REQUEST); }
-	 * 
 	 * 
 	 * @ExceptionHandler(InvalidIdPassed.class) public final ResponseEntity<Object>
 	 * handleInvalidId(Exception ex, WebRequest request) throws Exception {
@@ -51,5 +51,6 @@ public class CustomizedExceptionHandler extends ResponseEntityExceptionHandler {
 	 * "Passed Id is not Present", request.getDescription(false)); return new
 	 * ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND); }
 	 */
+	 
 
 }
