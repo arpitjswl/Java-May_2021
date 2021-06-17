@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.arpit.srpingboot.AngularIntegration.model.User;
 
 import DAO.Student_DAO_Imp;
+import DAO.User_DAO_Impl;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -23,11 +24,21 @@ import DAO.Student_DAO_Imp;
 public class UserController {
 	
 	@Autowired
-	private Student_DAO_Imp dao;
+	private User_DAO_Impl dao;
 	
 	@GetMapping(path = "/getAllUsers")
 	public List<User> getAllUsers() {
 		return dao.getAllUsersfromDB();
+	}
+	
+	@GetMapping(path = "/getUserById/{id}")
+	public User getUserById(@PathVariable("id") Integer id) {
+		return dao.getUserById(id);
+	}
+	
+	@GetMapping(path = "/getEmail/{inputEmail}")
+	public boolean checkIfEmailExists(@PathVariable("inputEmail") String inputEmail) {
+		return dao.checkEmail(inputEmail);
 	}
 	
 	@GetMapping(path = "/getUser/{email}")
@@ -44,10 +55,5 @@ public class UserController {
 	public boolean updateUser(@RequestBody User user,@PathVariable("id") Integer id) {
 		user.setUser_id(id);
 		return dao.updateInDB(user);
-	}
-	
-	@GetMapping(path = "/getEmail/{inputEmail}")
-	public boolean checkIfEmailExists(@PathVariable("inputEmail") String inputEmail) {
-		return dao.checkEmail(inputEmail);
 	}
 }

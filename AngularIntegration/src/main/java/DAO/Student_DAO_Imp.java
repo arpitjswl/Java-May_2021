@@ -18,10 +18,9 @@ import com.arpit.srpingboot.AngularIntegration.model.Customer;
 import com.arpit.srpingboot.AngularIntegration.model.Student;
 import com.arpit.srpingboot.AngularIntegration.model.User;
 import exception.DataNotFoundException;
-import exception.EmailExistsException;  
-  
-  
-  
+import exception.EmailExistsException;
+import exception.UserNotFoundException;  
+ 
 @Repository
 @Transactional
 public class Student_DAO_Imp  implements Student_DAO{  
@@ -107,86 +106,6 @@ public class Student_DAO_Imp  implements Student_DAO{
 		 customer = query.getResultList();		 
 		 return customer;
 	}
-      
-	/*
-	 * API's for Angular Project starts here
-	 */
-	
-	
-	 public List<User> getAllUsersfromDB() {
-		 Session currentSession = sessionFactory.getCurrentSession();
-		 Query query = currentSession.createQuery("from User");
-		 List<User> list = query.getResultList();
-		 
-		 	if (list.size() == 0)
-		 		throw new DataNotFoundException("No data Found in Database");
-		 return list;
-     }
-	 
-
-		public void saveUserData(User user) {
-			
-				Session currentSession = sessionFactory.getCurrentSession();
-				Query query = currentSession.createQuery("from User");
-				List<User> list = query.getResultList();
-				Iterator itr = list.iterator();
-
-				if (list.size() == 0)
-					sessionFactory.getCurrentSession().save(user);
-				
-				while (itr.hasNext()) {
-					User dbUser = (User) itr.next();
-					System.out.println("Passed email from Input ::::::" + user.getUser_email());
-					System.out.println("DB Email ::::::" + dbUser.getUser_email());
-
-					if (dbUser.getUser_email().equals(user.getUser_email()))
-						throw new EmailExistsException("Email Already exists in Database");
-					if (dbUser.getUser_email() != user.getUser_email())
-						sessionFactory.getCurrentSession().save(user);
-			} 
-		} 
-      
-      public User getUser(String email) {
-    	  Session currentSession = sessionFactory.getCurrentSession();
-    	  Query query = currentSession.createQuery("from User where user_email =: email");
-    	  query.setParameter("email", email);
-    	  User user = (User)query.getSingleResult();
-    	  System.out.println("user is " + user);
-    	  if (user != null)
-    		  return user;
-    	 return null;		  
-      }
-      
-      /*
-       * Method For Updating user Data in Database
-       */
-      
-      public boolean updateInDB(User user) {
-    	  User userObj = sessionFactory.getCurrentSession().get(User.class, user.getUser_id());
-    	  
-    	  userObj.setUser_name(user.getUser_name());
-    	  userObj.setUser_email(user.getUser_email());
-    	  userObj.setUser_address(user.getUser_address());
-    	  userObj.setUser_password(user.getUser_password());
-    	  userObj.setUser_mobile(user.getUser_mobile());
-    	  
-    	  sessionFactory.getCurrentSession().update(userObj);
-    	  return true;
-      }
-      
-      public boolean checkEmail(String email) {
-    	  Session currentSession = sessionFactory.getCurrentSession();
-    	  Query query = currentSession.createQuery("from User where user_email =: email");
-    	  query.setParameter("email", email);
-    	  List<User> list = query.getResultList();
-    	  Iterator itr = list.iterator();
-    	  
-    	  while (itr.hasNext()) {
-    		  User user = (User)itr.next();
-    		  if (user.getUser_email().equals(email))
-    			  return true;
-    	  }
-    	  return false;
-      }	
   
+	
 }  

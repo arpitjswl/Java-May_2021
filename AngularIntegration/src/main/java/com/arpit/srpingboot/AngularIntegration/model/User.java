@@ -4,10 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_data")
+@NamedQuery(query = "from User", name = "getAllUsers")
+@NamedQuery(query = "from User where user_email =: email", name = "getUserByEmail")
 public class User {
 	
 	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
