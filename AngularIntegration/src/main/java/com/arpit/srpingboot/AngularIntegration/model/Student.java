@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name="student_table")  
 public class Student {  
     @Id  
-    @GeneratedValue(strategy=GenerationType.TABLE)  
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)  
     private int student_id;  
     private String student_name;  
     private String student_email;  

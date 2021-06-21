@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,8 +28,22 @@ public class UserController {
 	@Autowired
 	private User_DAO_Impl dao;
 	
+	@Autowired
+	private JavaMailSender javaMailSender;
+	
 	@GetMapping(path = "/getAllUsers")
 	public List<User> getAllUsers() {
+		/*
+		 * String from = "jswl.arpit@gmail.com"; String to = "jswl.arpit@outlook.com";
+		 * 
+		 * SimpleMailMessage message = new SimpleMailMessage();
+		 * 
+		 * message.setFrom(from); message.setTo(to);
+		 * message.setSubject("This is a plain text email");
+		 * message.setText("Hello guys! This is a plain text email.");
+		 * 
+		 * javaMailSender.send(message);
+		 */
 		return dao.getAllUsersfromDB();
 	}
 	

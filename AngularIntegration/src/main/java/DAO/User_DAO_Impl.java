@@ -2,6 +2,8 @@ package DAO;
 
 import java.util.Iterator;
 import java.util.List;
+
+import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -69,12 +71,18 @@ public class User_DAO_Impl {
    	  Session currentSession = sessionFactory.getCurrentSession();
    	  Query query = currentSession.getNamedQuery("getUserByEmail");
    	  query.setParameter("email", email);
-   	  User user = (User)query.getSingleResult();
-   	  System.out.println("user is " + user);
-   	  if (user != null)
-   		  return user;
-   	 return null;		  
-     }
+   	  System.out.println("user is before " );
+   	  try {
+   		User user = (User)query.getSingleResult();
+   		if (user != null)
+     		  return user;
+   	  }
+   	  catch (NoResultException e) {
+		throw new DataNotFoundException("User is not Regsitered");
+	}
+   	  return null;
+   	  
+   }
      
      /*
       * Method For Updating user Data in Database
@@ -97,6 +105,7 @@ public class User_DAO_Impl {
    	  Session currentSession = sessionFactory.getCurrentSession();
    	  Query query = currentSession.getNamedQuery("getUserByEmail");
    	  query.setParameter("email", email);
+   	  
    	  List<User> list = query.getResultList();
    	  Iterator itr = list.iterator();
    	  

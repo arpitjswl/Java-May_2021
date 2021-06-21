@@ -1,5 +1,2 @@
-
-    
-    
-Insert into student_table (student_id, student_name, student_email, student_branch)
- values (901, 'Ankur', 'jswl.ankur@outlook.com', 'ENTC');    
+Insert into user_data (USER_ID,USER_ADDRESS,USER_EMAIL,USER_MOBILE,USER_NAME,USER_PASSWORD) values (1,'494, Indrani Jewellers main road Athner
+Dist. Betul','jswl.arpit@gmail.com',9209829799,'Arpit','12345');    
